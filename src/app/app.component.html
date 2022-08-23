@@ -1,0 +1,55 @@
+<nz-layout style="height: 100%">
+  <nz-content>
+    <div class="form-content">
+      <app-taskForm (task)="receiveTask($event)"></app-taskForm>
+    </div>
+      <div class="toDoColumn">
+        <h3>To Do List</h3>
+        <nz-table #todoTask [nzData]="toDoList" nzSize="small" [nzShowPagination]="false"
+          [nzNoResult]="'You are free Today'">
+          <thead>
+            <tr>
+              <!-- <th nzWidth="80px">Action</th>
+              <th nzWidth="300px">Task</th>
+              <th >Action</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of todoTask.data; let i = index">
+              <td  style="width:5%">
+                <a (click)="compltedTask(data, i)" style="padding-right: 20px">
+                  <i nz-icon [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i></a>
+                  <a (click)="removeTask(i)"><i nz-icon nzType="delete" style="color: red" nzTheme="outline"></i></a>
+              </td>
+              <td>{{ data.myTask }}</td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </div>
+
+      <br />
+      <div class="compltedColumn">
+        <h3>Completed Task</h3>
+        <nz-table #competedTask [nzData]="compltedTaskList" [nzNoResult]="'Nothing Done Today'" nzShowPagination="false">
+          <thead>
+            <!-- <tr>
+              <th>Completed Task</th>
+              <th nzWidth="200px" nzAlign="center">Action</th>
+            </tr> -->
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of competedTask.data; let i = index">
+              <td style="width:5%">
+                <a (click)="redoTask(data, i)" style="padding-right: 20px">
+                  <i nz-icon style="color: greenyellow" nzType="redo" nzTheme="outline"></i></a>
+              </td>
+              <td>{{ data.myTask }}</td>
+
+            </tr>
+          </tbody>
+        </nz-table>
+      </div>
+
+  </nz-content>
+  <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+</nz-layout>

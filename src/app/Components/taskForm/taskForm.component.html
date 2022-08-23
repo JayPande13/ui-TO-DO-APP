@@ -1,0 +1,8 @@
+<form nz-form [formGroup]="taskForm">
+  <nz-form-item>
+    <nz-form-label nzFor="task" >Task</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input style="width:80%" nz-input name="task" type="text" id="text" formControlName="myTask" (keydown.enter)="submit()">
+    </nz-form-control>
+  </nz-form-item >
+</form>
