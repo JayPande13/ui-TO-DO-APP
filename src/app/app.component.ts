@@ -14,7 +14,8 @@ export class AppComponent implements OnChanges{
 
   }
   receiveTask(tasks:any){
-    if(tasks !== ''){
+    if(tasks.myTask != '' && tasks.myTask != null){
+      console.log(tasks.myTask)
       this.toDoList.push(tasks)
       this.toDoList =[...this.toDoList]
     }
